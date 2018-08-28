@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Login from './Login'
-import logo from './logo.svg'
 import {
   BrowserRouter as Router,
   Route,
@@ -31,11 +30,11 @@ class Home extends Component {
     return (
       <div className='App'>
         <header className='App-header'>
-          <img src={this.state.user.picture} className='App-logo' />
+          <img src={this.state.user.picture} className='App-logo' alt='face' />
           <h1 className='App-title'>=</h1>
         </header>
         <p className='App-intro'>
-          welcome {this.state.user.given_name}
+          Welcome {this.state.user.given_name}
         </p>
       </div>
     )
