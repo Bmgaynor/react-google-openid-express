@@ -6,22 +6,36 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import { confirmLogin } from './utils/authorization'
+import { confirmLogin, getUserInfoFromJWT } from './utils/authorization'
 import './App.css'
 
 class Home extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      user: {
+        email: '',
+        picture: '',
+        given_name: '',
+        family_name: ''
+      }
+    }
+  }
   componentDidMount () {
-    confirmLogin()
+    const user = getUserInfoFromJWT()
+    this.setState({
+      user: user
+    })
   }
   render () {
     return (
       <div className='App'>
         <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to React</h1>
+          <img src={this.state.user.picture} className='App-logo' />
+          <h1 className='App-title'>=</h1>
         </header>
         <p className='App-intro'>
-          To get started, edit <code>src/App.js</code> and save to reload.
+          welcome {this.state.user.given_name}
         </p>
       </div>
     )
@@ -29,6 +43,11 @@ class Home extends Component {
 }
 
 class App extends Component {
+  componentDidMount () {
+    if (window.location !== '/login') {
+      confirmLogin()
+    }
+  }
   render () {
     return (
       <Router>
