@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom'
 import { confirmLogin, getUserInfoFromJWT } from './utils/authorization'
+import Patrick from 'patricks-react-hello-world'
 import './App.css'
 
 class Home extends Component {
@@ -21,11 +22,16 @@ class Home extends Component {
     }
   }
   componentDidMount () {
-    const user = getUserInfoFromJWT()
-    this.setState({
-      user: user
+    confirmLogin().then(() => {
+      const user = getUserInfoFromJWT()
+      if (user) {
+        this.setState({
+          user: user
+        })
+      }
     })
   }
+
   render () {
     return (
       <div className='App'>
@@ -34,7 +40,7 @@ class Home extends Component {
           <h1 className='App-title'>=</h1>
         </header>
         <p className='App-intro'>
-          Welcome {this.state.user.given_name}
+          Welcome {this.state.user.given_name} <Patrick />
         </p>
       </div>
     )
@@ -42,11 +48,6 @@ class Home extends Component {
 }
 
 class App extends Component {
-  componentDidMount () {
-    if (window.location !== '/login') {
-      confirmLogin()
-    }
-  }
   render () {
     return (
       <Router>

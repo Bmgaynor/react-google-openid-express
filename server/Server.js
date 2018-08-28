@@ -6,6 +6,13 @@ const { OAuth2Client } = require('google-auth-library')
 const CLIENT_ID = '485938632670-kd8gsiinti71qm7rlhnd68hulumbh8d9.apps.googleusercontent.com'
 const client = new OAuth2Client(CLIENT_ID)
 
+const isVerifiedMiddleware = (req, res, next) => {
+  if (req.user) {
+    next()
+  } else {
+    res.sendStatus(401)
+  }
+}
 // https://developers.google.com/identity/one-tap/web/idtoken-auth
 async function verify (token) {
   const ticket = await client.verifyIdToken({
@@ -46,13 +53,23 @@ app.use('/api/health', (req, res) => {
   }
 })
 
-app.post('/api/authorized', async (req, res) => {
+app.post('/api/authorized', (req, res) => {
   if (!req.user) {
     res.sendStatus(401)
   } else {
     res.json({status: 'up'})
   }
 })
+
+// ----------- Protected apis ------------
+
+app.get('/api/ProtectedInfo', isVerifiedMiddleware, (req, res, next) => {
+  res.json({
+    ProtectedInfoInfo: 'shhhh its a ProtectedInfo'
+  })
+})
+
+// ---------------------------------------
 
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
