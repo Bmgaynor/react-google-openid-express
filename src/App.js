@@ -1,12 +1,5 @@
 import React, { Component } from 'react'
-import Login from './Login'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
 import { confirmLogin, getUserInfoFromJWT } from './utils/authorization'
-import Patrick from 'patricks-react-hello-world'
 import './App.css'
 
 class Home extends Component {
@@ -37,10 +30,13 @@ class Home extends Component {
       <div className='App'>
         <header className='App-header'>
           <img src={this.state.user.picture} className='App-logo' alt='face' />
-          <h1 className='App-title'>=</h1>
+          <h1 className='App-title'>Google OpenId React Express!</h1>
         </header>
         <p className='App-intro'>
-          Welcome {this.state.user.given_name} <Patrick />
+          Welcome {this.state.user.given_name}
+        </p>
+        <p className='App-intro'>
+          Checkout code on <a href='https://github.com/Bmgaynor/react-google-openid-express'>Github</a>
         </p>
       </div>
     )
@@ -50,19 +46,7 @@ class Home extends Component {
 class App extends Component {
   render () {
     return (
-      <Router>
-        <div>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/login'>Login</Link></li>
-          </ul>
-
-          <hr />
-
-          <Route exact path='/' component={Home} />
-          <Route path='/login' component={Login} />
-        </div>
-      </Router>
+      <Home />
     )
   }
 }

@@ -9,10 +9,8 @@
     "google-auth-library": "^1.6.1",
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
-    "patricks-react-hello-world": "^1.0.9",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
   },
   "proxy": {
@@ -28,6 +26,7 @@
     "start": "NODE_ENV=production node ./server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npx now --public"
   }
 }
