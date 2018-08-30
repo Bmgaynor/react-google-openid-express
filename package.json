@@ -26,6 +26,7 @@
     "start": "NODE_ENV=production node ./server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npx now --public"
   }
 }

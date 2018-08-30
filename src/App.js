@@ -35,6 +35,9 @@ class Home extends Component {
         <p className='App-intro'>
           Welcome {this.state.user.given_name}
         </p>
+        <p className='App-intro'>
+          Checkout code on <a href='https://github.com/Bmgaynor/react-google-openid-express'>Github</a>
+        </p>
       </div>
     )
   }
