@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import GithubCorner from 'react-github-corner'
 import { confirmLogin, getUserInfoFromJWT } from './utils/authorization'
 import './App.css'
 
@@ -35,9 +36,7 @@ class Home extends Component {
         <p className='App-intro'>
           Welcome {this.state.user.given_name}
         </p>
-        <p className='App-intro'>
-          Checkout code on <a href='https://github.com/Bmgaynor/react-google-openid-express'>Github</a>
-        </p>
+        <GithubCorner href='https://github.com/Bmgaynor/react-google-openid-express' bannerColor='white' octoColor='#222' />
       </div>
     )
   }
