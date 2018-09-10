@@ -5,7 +5,10 @@ const app = express()
 const { OAuth2Client } = require('google-auth-library')
 const CLIENT_ID = '485938632670-kd8gsiinti71qm7rlhnd68hulumbh8d9.apps.googleusercontent.com'
 const client = new OAuth2Client(CLIENT_ID)
+const isDevelopment = process.env.NODE_ENV === 'development'
+const DOMAIN = isDevelopment ? '.localhost:3000' : '.react-google-openid-express-nfvrgetfsi.now.sh'
 
+app.disable('x-powered-by')
 const isVerifiedMiddleware = (req, res, next) => {
   if (req.user) {
     next()
@@ -32,7 +35,11 @@ app.use(async (req, res, next) => {
       console.log('jwt found in query')
       req.user = await verify(req.query.id_token)
       console.log('setting jwt to cookie')
-      res.cookie('JWT', req.query.id_token)
+      if (isDevelopment) {
+        res.cookie('JWT', req.query.id_token)
+      } else {
+        res.cookie('JWT', req.query.id_token, { domain: DOMAIN, httpOnly: true, secure: true })
+      }
     } else if (req.cookies.JWT) {
       console.log('cookie found')
       req.user = await verify(req.cookies.JWT)
@@ -74,7 +81,7 @@ app.get('/api/ProtectedInfo', isVerifiedMiddleware, (req, res, next) => {
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+    res.sendFile(path.join('build', 'index.html'))
   })
 }
 
