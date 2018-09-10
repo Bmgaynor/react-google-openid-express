@@ -19,3 +19,15 @@ $ npm run dev:client
 ```bash 
 $ npm run dev
 ```
+
+# Deployment 
+
+```bash
+$ npm run deploy
+```
+
+then run the aliasing script with the url of the deployment
+
+```bash
+$ now alias https://react-google-openid-express-rffwnyxsai https://react-google-openid-express
+```
