@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^4.0.1",
-    "cookie-parser": "^1.4.3",
-    "express": "^4.16.3",
-    "google-auth-library": "^1.6.1",
+    "concurrently": "^4.1.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "google-auth-library": "^3.1.2",
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-github-corner": "^2.3.0",
-    "react-scripts": "1.1.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-github-corner": "^2.3.0"
   },
   "proxy": {
     "/api": {
@@ -29,5 +28,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npx now --public"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11",
+    "react-scripts": "^1.1.5"
   }
 }
