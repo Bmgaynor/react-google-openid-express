@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^4.1.0",
+    "concurrently": "^4.1.2",
     "cookie-parser": "^1.4.4",
-    "express": "^4.16.4",
-    "google-auth-library": "^3.1.2",
-    "js-cookie": "^2.2.0",
+    "express": "^4.17.1",
+    "google-auth-library": "^5.3.0",
+    "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
     "react-github-corner": "^2.3.0"
   },
   "proxy": {
@@ -30,7 +30,7 @@
     "deploy": "npx now --public"
   },
   "devDependencies": {
-    "nodemon": "^1.18.11",
-    "react-scripts": "^1.1.5"
+    "nodemon": "^1.19.3",
+    "react-scripts": "^3.2.0"
   }
 }
